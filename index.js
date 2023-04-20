@@ -32,6 +32,15 @@ app.use(
     })
 );
 
+function verify(req, res, next)
+{
+  var sesseion = req.sesseion;
+  if (req.sesseion == true)
+  {
+    next();
+  }
+}
+
 
 // Rota para fazer o login
 app.post('/login', (req, res) => {
@@ -41,7 +50,7 @@ app.post('/login', (req, res) => {
   connection.query(sql, (err, result) => {
     if (err) throw err;
     if (result.length > 0) {
-      res.redirect('/homepage')
+      res.render('homepage')
     } else {
       res.send('Invalid username or password');
     }
@@ -56,7 +65,7 @@ app.get("/", async (req, res, next) =>{
 });
 
 
-app.get("/homepage", async (req, res, next) =>{
+app.get("/homepage", verify, async (req, res, next) =>{
 
     res.render("homepage");
 
