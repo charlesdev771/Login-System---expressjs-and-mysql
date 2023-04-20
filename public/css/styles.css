@@ -1,0 +1,15 @@
+body {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .card {
+    width: 350px;
+    padding: 30px;
+  }
+
+  .form-control:focus {
+    box-shadow: none;
+  }
